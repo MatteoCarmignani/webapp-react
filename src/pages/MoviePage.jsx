@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import ReviewCard from "../components/ReviewCard";
+import ReviewForm from "../components/ReviewForm";
 
 const MoviePage = () => {
   const { id } = useParams();
@@ -21,6 +22,14 @@ const MoviePage = () => {
       });
   }, [id]);
 
+  // 👇 funzione per aggiungere una recensione appena inviata
+  const handleNewReview = (newReview) => {
+    setMovie((prev) => ({
+      ...prev,
+      reviews: [...(prev.reviews || []), newReview],
+    }));
+  };
+
   if (loading) {
     return <div className="text-center mt-5">Caricamento in corso...</div>;
   }
@@ -31,8 +40,8 @@ const MoviePage = () => {
 
   return (
     <div className="container my-5">
+      {/* Dettagli del film */}
       <div className="row align-items-center">
-        {/* Immagine ridotta e centrata */}
         <div className="col-md-4 text-center mb-4 mb-md-0">
           <img
             src={movie.image}
@@ -70,7 +79,12 @@ const MoviePage = () => {
         )}
       </div>
 
-      {/* Pulsante di ritorno */}
+      {/* Form per aggiungere recensione */}
+      <div className="mt-5 border-top pt-4">
+        <ReviewForm movieId={id} onReviewAdded={handleNewReview} />
+      </div>
+
+      {/* 🔽 Pulsante per tornare alla home */}
       <div className="text-center mt-5">
         <Link to="/" className="btn btn-outline-primary rounded-pill px-4">
           ⬅️ Torna alla Home
