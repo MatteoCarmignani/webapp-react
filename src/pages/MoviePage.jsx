@@ -84,7 +84,7 @@ const MoviePage = () => {
         <ReviewForm movieId={id} onReviewAdded={handleNewReview} />
       </div>
 
-      {/* 🔽 Pulsante per tornare alla home */}
+      {/* Pulsante per tornare alla home */}
       <div className="text-center mt-5">
         <Link to="/" className="btn btn-outline-primary rounded-pill px-4">
           ⬅️ Torna alla Home
