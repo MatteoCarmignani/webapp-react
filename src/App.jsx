@@ -9,7 +9,6 @@ import DefaultLayout from './layouts/DefaultLayout'
 // import degli elemnti React di gestione router
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
